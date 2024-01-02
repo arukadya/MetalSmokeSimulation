@@ -74,7 +74,6 @@ struct Fluid {
         createDensityInitialState()
         createDensity_ambInitialState()
         createTemplatureInitialState()
-        
     }
     
     private func createVelocityInitialState() {

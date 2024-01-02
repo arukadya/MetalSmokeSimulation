@@ -142,9 +142,6 @@ kernel void mpsProject(
     float rho = rho_tgt + rho_amb;
     float scale = dt/(rho*delta.x*delta.y);//左辺の係数部分
     float4 col = float4(0.0);
-//    float eps = 1.0e-4;//ガウスザイデル法の精度
-//    float err;//ガウスザイデル法の残差
-//    do{
     float4 D = float4(1.0,1.0,-1.0,-1.0);//周囲4方向に向かって働く、圧力の向き
     uint i = gridPosition.x;
     uint j = gridPosition.y;
