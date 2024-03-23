@@ -34,7 +34,7 @@ class squareInitialState{
         let lower = center.y + Float(height)/2
         let left = center.x - Float(width)/2
         let right = center.x + Float(width)/2
-        if(left < pos.x && pos.x < right && uppper < center.y && center.y < lower){
+        if(left < pos.x && pos.x < right && uppper < pos.y && pos.y < lower){
             return true
         }
         else{

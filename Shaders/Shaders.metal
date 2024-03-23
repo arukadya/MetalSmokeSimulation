@@ -25,9 +25,10 @@ fragment float4 fragmentShader(FragmentVertex in [[stage_in]],
                         texture2d<float, access::sample> gameGrid [[texture(0)]])
 {
     constexpr sampler nearestSampler(coord::normalized, filter::nearest);
-    float4 color = gameGrid.sample(nearestSampler, in.texCoords);
+    float4 color = gameGrid.sample(nearestSampler, in.texCoords).x;
+    float4 colorG = {0.0, color.g, 0.0, 0.0};
     float4 white = {1.0,1.0,1.0,1.0};
-//    return white - color;
-    return color;
+    return white - colorG;
+//    return color;
 }
 
