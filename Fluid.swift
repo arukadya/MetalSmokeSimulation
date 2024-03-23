@@ -63,7 +63,7 @@ struct Fluid {
         self.force = force
         self.width = width
         self.height = height
-        self.initialState = squareInitialState(center: simd_float3(Float(width/2),Float(height/2),0.0), width: width/8, height: height/8)
+        self.initialState = squareInitialState(center: simd_float3(Float(width/2),Float(height/4*3),0.0), width: width/2, height: height/2)
         self.poissonConstantBuffer = poissonConstantBuffer
         self.poissonCoefficientBuffer = poissonCoefficientBuffer
         poissonCoefficientMatrix = MPSMatrix(device: device, descriptor: MPSCoefficientDescriptor)
@@ -181,7 +181,8 @@ struct Fluid {
             for j in 0..<width {
                 let pos = simd_float3(Float(j),Float(i),0.0)
                 if(initialState.isInsideAndBoundary(pos: pos)){
-                    initialGrid[j*Fluid.densityComponents + i*width*Fluid.densityComponents] = 255/255
+//                    initialGrid[j*Fluid.densityComponents + i*width*Fluid.densityComponents] = 255/255
+                    initialGrid[j*Fluid.densityComponents + i*width*Fluid.densityComponents] = 200/255
                     initialGrid[j*Fluid.densityComponents + i*width*Fluid.densityComponents + 1] = 0/255
                     initialGrid[j*Fluid.densityComponents + i*width*Fluid.densityComponents + 2] = 0/255
                     initialGrid[j*Fluid.densityComponents + i*width*Fluid.densityComponents + 3] = 1.0
@@ -227,7 +228,7 @@ struct Fluid {
         var initialGrid: [Float] = Array(repeating: 0, count: width * height * Fluid.densityComponents)
         for i in 0..<height {
             for j in 0..<width {
-                initialGrid[j*Fluid.densityComponents + i*width*Fluid.densityComponents] = 127/255
+                initialGrid[j*Fluid.densityComponents + i*width*Fluid.densityComponents] = 100/255
                 initialGrid[j*Fluid.densityComponents + i*width*Fluid.densityComponents + 1] = 0/255
                 initialGrid[j*Fluid.densityComponents + i*width*Fluid.densityComponents + 2] = 0/255
                 initialGrid[j*Fluid.densityComponents + i*width*Fluid.densityComponents + 3] = 1.0
